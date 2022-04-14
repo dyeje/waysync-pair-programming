@@ -24,6 +24,9 @@ gem "react-rails"
 gem "haml-rails", "~> 2.0"
 gem "slim-rails"
 
+# HTTP mocking
+gem "webmock"
+
 group :development, :test do
   gem "debug", ">= 1.0.0", platforms: %i[mri mingw x64_mingw]
   gem "rspec-rails", "~> 5.1"

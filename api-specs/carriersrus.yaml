@@ -1,0 +1,87 @@
+swagger: "2.0"
+info:
+  description: "Carriers R Us API for shipping things"
+  version: "1.0.0"
+  title: "Carriers R Us"
+host: "carriersrus.biz"
+paths:
+  /quote:
+    post:
+      summary: "Get quote for a shipment"
+      description: "Please see model descriptions for correct field formatting"
+      operationId: "createQuote"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Details of the shipment"
+        required: true
+        schema:
+          type: object
+          properties:
+            origin:
+              type: "string"
+              description: "City, State / Province, Country"
+            destination:
+              type: "string"
+              description: "City, State / Province, Country"
+            container_count:
+              type: "integer"
+              minimum: 1
+            container_type:
+              type: "integer"
+              description: "See ContainerTypes model for options"
+              minimum: 1
+              maximum: 4
+            hazardous:
+              type: "boolean"
+            pickup:
+              type: "string"
+              format: "date"
+            weight:
+              type: "integer"
+              description: "Weight in kilograms per container"
+            payload:
+              type: "string"
+      responses:
+        "200":
+          description: "Okay"
+          schema:
+            "$ref": "#/definitions/Rate"
+        "405":
+          description: "Invalid input"
+      security:
+      - api_key: []
+
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Rate:
+    type: "object"
+    properties:
+      valid_until:
+        type: "string"
+        format: "date"
+      cost:
+        type: "integer"
+  ContainerTypes:
+    type: "object"
+    properties:
+      1:
+        type: "integer"
+        description: "40' Dry Container"
+      2:
+        type: "integer"
+        description: "20' Dry Container"
+      3:
+        type: "integer"
+        description: "40' Reefer"
+      4:
+        type: "integer"
+        description: "20' Reefer"

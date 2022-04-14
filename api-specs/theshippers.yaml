@@ -1,0 +1,68 @@
+swagger: "2.0"
+info:
+  description: "The Shippers API for the sending of goods"
+  version: "1.0.0"
+  title: "The Shippers"
+host: "theshippers.xyz"
+paths:
+  /rate:
+    post:
+      summary: "Rates for shipping"
+      description: "Please see model descriptions for correct field formatting"
+      operationId: "createQuote"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Details of the shipment"
+        required: true
+        schema:
+          type: object
+          properties:
+            to_lat:
+              type: "number"
+              description: "Latitude of the destination"
+            to_long:
+              type: "number"
+              description: "Longitude of the destination"
+            from_lat:
+              type: "number"
+              description: "Latitude of the starting point"
+            from_long:
+              type: "number"
+              description: "Longitude of the starting point"
+            container_count:
+              type: "integer"
+              minimum: 1
+            container_type:
+              type: "string"
+              enum: ["40Dry", "20Dry", "40Reefer", "20Reefer", "40Tank"]
+            danger:
+              type: "boolean"
+            date:
+              type: "string"
+              format: "date"
+            total_weight:
+              type: "integer"
+              description: "Total weight of goods across all containers"
+            payload:
+              type: "string"
+      responses:
+        "200":
+          description: "Okay"
+          schema:
+            "$ref": "#/definitions/Rate"
+        "405":
+          description: "Invalid input"
+definitions:
+  Rate:
+    type: "object"
+    properties:
+      valid_until:
+        type: "string"
+        format: "date"
+      cost:
+        type: "integer"
