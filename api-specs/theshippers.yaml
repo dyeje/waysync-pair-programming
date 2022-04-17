@@ -45,9 +45,9 @@ paths:
             date:
               type: "string"
               format: "date"
-            total_weight:
+            weight:
               type: "integer"
-              description: "Total weight of goods across all containers"
+              description: "Weight of cargo in each container in pounds"
             payload:
               type: "string"
       responses:
@@ -59,10 +59,5 @@ paths:
           description: "Invalid input"
 definitions:
   Rate:
-    type: "object"
-    properties:
-      valid_until:
-        type: "string"
-        format: "date"
-      cost:
-        type: "integer"
+    type: "number"
+    description: "Price in USD"

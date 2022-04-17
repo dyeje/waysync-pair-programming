@@ -10,7 +10,6 @@ gem "cssbundling-rails"
 gem "image_processing"
 gem "jbuilder", "~> 2.7"
 gem "jsbundling-rails"
-gem "pg"
 gem "puma", "~> 5.0"
 gem "redis", "~> 4.0"
 gem "sassc-rails", "~> 2.1"
@@ -26,6 +25,10 @@ gem "slim-rails"
 
 # HTTP mocking
 gem "webmock"
+
+# Database Connection
+gem "sqlite3"
+gem "pg"
 
 group :development, :test do
   gem "debug", ">= 1.0.0", platforms: %i[mri mingw x64_mingw]

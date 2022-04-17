@@ -46,6 +46,7 @@ paths:
               description: "Weight in kilograms per container"
             payload:
               type: "string"
+              description: "Description of cargo"
       responses:
         "200":
           description: "Okay"
@@ -70,6 +71,7 @@ definitions:
         format: "date"
       cost:
         type: "integer"
+        description: "Price in USD"
   ContainerTypes:
     type: "object"
     properties:
