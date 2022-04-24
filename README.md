@@ -3,8 +3,11 @@
 ## Prerequisites
 
 This repo is using Rails 7, so you'll need at least Ruby 2.7+, though Ruby 3.0+ is recommended. ([installation guide](https://rvm.io/))
+
 You will need `yarn` in order to install JavaScript dependencies. ([installation guide](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable))
+
 You will need `bundle` in order to install Ruby dependencies. ([installation guide](https://bundler.io/))
+
 You will need `foreman` in order to run the development server. ([installation guide](https://github.com/ddollar/foreman#installation))
 
 ## Setup
@@ -22,7 +25,8 @@ bin/dev
 ```
 
 ## Existing Code
-This repo is a default Rails 7 application. All that has been done is setup for user accounts via Devise and react-rails via esbuild. You will need to build everything from scratch for the exercise.
+
+This repo is a default Rails 7 application. All that has been done is setup for user accounts via Devise, react-rails via esbuild, and scaffolding for the `Quote` model.
 
 ### Customers
 
@@ -38,4 +42,4 @@ If you would like to see visual documentation, you can load the spec files into 
 
 RSpec and Cuprite
 
-* https://github.com/rubycdp/cuprite
+- https://github.com/rubycdp/cuprite

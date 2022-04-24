@@ -26,7 +26,6 @@ gem "webmock"
 
 # Database Connection
 gem "sqlite3"
-gem "pg"
 
 group :development, :test do
   gem "debug", ">= 1.0.0", platforms: %i[mri mingw x64_mingw]

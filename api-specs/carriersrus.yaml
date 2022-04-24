@@ -11,42 +11,48 @@ paths:
       description: "Please see model descriptions for correct field formatting"
       operationId: "createQuote"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Details of the shipment"
-        required: true
-        schema:
-          type: object
-          properties:
-            origin:
-              type: "string"
-              description: "City, State / Province, Country"
-            destination:
-              type: "string"
-              description: "City, State / Province, Country"
-            container_count:
-              type: "integer"
-              minimum: 1
-            container_type:
-              type: "integer"
-              description: "See ContainerTypes model for options"
-              minimum: 1
-              maximum: 4
-            hazardous:
-              type: "boolean"
-            pickup:
-              type: "string"
-              format: "date"
-            weight:
-              type: "integer"
-              description: "Weight in kilograms per container"
-            payload:
-              type: "string"
-              description: "Description of cargo"
+        - in: "body"
+          name: "body"
+          description: "Details of the shipment"
+          required: true
+          schema:
+            type: object
+            properties:
+              origin:
+                type: "string"
+                description: "City, State / Province, Country"
+              destination:
+                type: "string"
+                description: "City, State / Province, Country"
+              hazardous:
+                type: "boolean"
+              pickup:
+                type: "string"
+                format: "date"
+              weight:
+                type: "integer"
+                description: "Weight in kilograms per container"
+              payload:
+                type: "string"
+                description: "Description of cargo"
+              containers:
+                type: "array"
+                description: "Containers for shipment"
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: "integer"
+                      description: "See ContainerTypes model for options"
+                      minimum: 1
+                      maximum: 4
+                    weight:
+                      type: "integer"
+                      description: "Weight of goods in container in kilograms"
       responses:
         "200":
           description: "Okay"
@@ -55,7 +61,7 @@ paths:
         "405":
           description: "Invalid input"
       security:
-      - api_key: []
+        - api_key: []
 
 securityDefinitions:
   api_key:

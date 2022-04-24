@@ -37,3 +37,6 @@
 /node_modules
 
 yarn-error.log
+
+rails7_new_development
+rails7_new_test

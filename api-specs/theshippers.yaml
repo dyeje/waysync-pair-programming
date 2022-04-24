@@ -11,45 +11,48 @@ paths:
       description: "Please see model descriptions for correct field formatting"
       operationId: "createQuote"
       consumes:
-      - "application/json"
+        - "application/json"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Details of the shipment"
-        required: true
-        schema:
-          type: object
-          properties:
-            to_lat:
-              type: "number"
-              description: "Latitude of the destination"
-            to_long:
-              type: "number"
-              description: "Longitude of the destination"
-            from_lat:
-              type: "number"
-              description: "Latitude of the starting point"
-            from_long:
-              type: "number"
-              description: "Longitude of the starting point"
-            container_count:
-              type: "integer"
-              minimum: 1
-            container_type:
-              type: "string"
-              enum: ["40Dry", "20Dry", "40Reefer", "20Reefer", "40Tank"]
-            danger:
-              type: "boolean"
-            date:
-              type: "string"
-              format: "date"
-            weight:
-              type: "integer"
-              description: "Weight of cargo in each container in pounds"
-            payload:
-              type: "string"
+        - in: "body"
+          name: "body"
+          description: "Details of the shipment"
+          required: true
+          schema:
+            type: object
+            properties:
+              to_lat:
+                type: "number"
+                description: "Latitude of the destination"
+              to_long:
+                type: "number"
+                description: "Longitude of the destination"
+              from_lat:
+                type: "number"
+                description: "Latitude of the starting point"
+              from_long:
+                type: "number"
+                description: "Longitude of the starting point"
+              danger:
+                type: "boolean"
+              date:
+                type: "string"
+                format: "date"
+              payload:
+                type: "string"
+              containers:
+                type: "array"
+                description: "Containers for shipment"
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: "string"
+                      enum: ["40Dry", "20Dry", "40Reefer", "20Reefer", "40Tank"]
+                    weight:
+                      type: "integer"
+                      description: "Weight of cargo in each container in pounds"
       responses:
         "200":
           description: "Okay"
